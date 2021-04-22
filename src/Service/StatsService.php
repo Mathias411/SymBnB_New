@@ -37,7 +37,7 @@ class StatsService {
     }
 
     public function getAdsStats($direction){
-        $this->manager->createQuery(
+        return $this->manager->createQuery(
             'SELECT AVG(c.rating) as note, a.title, a.id, u.firstName, u.lastname, u.picture
             FROM App\Entity\Comment c
             JOIN c.ad a

@@ -12,7 +12,7 @@ Encore
     // public path used by the web server to access the output path
     .setPublicPath('/build')
     // only needed for CDN's or sub-directory deploy
-    .setManifestKeyPrefix('build/')
+    //.setManifestKeyPrefix('build/')
 
     /*
      * ENTRY CONFIG
@@ -21,6 +21,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('js/app', './assets/js/app.js')
+    .addEntry('js/ad', './assets/js/ad.js')
     .addStyleEntry('css/app', './assets/css/app.scss')
     //.addStyleEntry('css/app', './assets/css/bootstrap.min.css')
 
