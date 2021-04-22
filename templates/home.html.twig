@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block body %}
+
     <div class="container">
         <div class="jumbotron mt-3">
             <h1 class="display-3">Bienvenue sur SymBnB</h1>
@@ -23,114 +24,34 @@
         <h2 class="h1 my-5">Nos appartements stars</h2>
 
         <div class="row">
-            <div class="col-md-4">
-                <div class="card bg-light mb-3">
-                    <div class="card-header text-center">
-                        3 chambres, <strong>49&euro; / nuit</strong> <br>
-                        <small>Pas encore noté</small>
-                    </div>
-
-                    <img src="http://placehold.it/1000x400" alt="Image de l'appartement" style="height: 200px; width: 100%; display: block;">
-
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            Appartement de ouf !
-                        </h4>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Etiam laoreet elementum condimentum. Aliquam vestibulum, urna non scelerisque mollis, turpis magna.
-                        </p>
-                        <a href="#" class="btn btn-secondary">En savoir plus</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card bg-light mb-3">
-                    <div class="card-header text-center">
-                        3 chambres, <strong>49&euro; / nuit</strong> <br>
-                        <small>Pas encore noté</small>
-                    </div>
-
-                    <img src="http://placehold.it/1000x400" alt="Image de l'appartement" style="height: 200px; width: 100%; display: block;">
-
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            Appartement de ouf !
-                        </h4>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Etiam laoreet elementum condimentum. Aliquam vestibulum, urna non scelerisque mollis, turpis magna.
-                        </p>
-                        <a href="#" class="btn btn-secondary">En savoir plus</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card bg-light mb-3">
-                    <div class="card-header text-center">
-                        3 chambres, <strong>49&euro; / nuit</strong> <br>
-                        <small>Pas encore noté</small>
-                    </div>
-
-                    <img src="http://placehold.it/1000x400" alt="Image de l'appartement" style="height: 200px; width: 100%; display: block;">
-
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            Appartement de ouf !
-                        </h4>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Etiam laoreet elementum condimentum. Aliquam vestibulum, urna non scelerisque mollis, turpis magna.
-                        </p>
-                        <a href="#" class="btn btn-secondary">En savoir plus</a>
-                    </div>
-                </div>
-            </div>
+           {% for data in ads %}
+                {% include 'ad/_ad.html.twig' with {'ad': data.annonce} %}
+           {% endfor %}
         </div>
 
         <h2 class="h1 my-5">Nos propriétaires stars</h2>
 
         <div class="row">
+            {% for data in users %}
+            {% set user = data.user %}
             <div class="col">
                 <div class="card border-secondary mb-3">
                     <div class="card-body">
-                        <h4 class="card-title">
-                            Lior Chamla
-                        </h4>
+                        <h4 class="card-title">{{user.fullName}}</h4>
 
                         <hr>
 
                         <div class="card-text">
-                            <img src="http://placehold.it/64x64" alt="Avatar de Lior Chamla" class="float-left mr-3">
+                            <img src="{{user.picture}}" alt="Avatar de {{user.fullName}}" class="float-left mr-3">
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                Etiam laoreet elementum condimentum. Aliquam vestibulum.
+                                {{user.introduction}}
                             </p>
                         </div>
-                        <a href="#" class="btn btn-success float-right">En savoir plus!</a>
+                        <a href="{{path('user_show', {'slug': user.slug})}}" class="btn btn-success float-right">En savoir plus!</a>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card border-secondary mb-3">
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            Lior Chamla
-                        </h4>
-
-                        <hr>
-
-                        <div class="card-text">
-                            <img src="http://placehold.it/64x64" alt="Avatar de Lior Chamla" class="float-left mr-3">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                Etiam laoreet elementum condimentum. Aliquam vestibulum.
-                            </p>
-                        </div>
-                        <a href="#" class="btn btn-success float-right">En savoir plus!</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
