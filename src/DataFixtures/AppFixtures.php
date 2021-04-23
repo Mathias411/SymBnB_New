@@ -35,7 +35,7 @@ class AppFixtures extends Fixture
                 ->setLastName('Chamla')
                 ->setEmail('lior@symfony.com')
                 ->setHash($this->encoder->encodePassword($adminUser, 'password'))
-                ->setPicture('https://picsum.photos/300/300')
+                ->setPicture('https://randomuser.me/api/portraits/men/52.jpg')
                 ->setIntroduction($faker->sentence())
                 ->setDescription('<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
                 ->addUserRole($adminRole);
